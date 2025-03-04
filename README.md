@@ -64,3 +64,49 @@ Follow these steps to set up and run the project locally.
 6. **Access the app**:
 - Open your browser and go to http://127.0.0.1:5000/.
 
+---
+
+**Project Structure**
+```bash
+flask-todo-app/
+│
+├── app.py                # Main application file
+├── requirements.txt      # List of dependencies
+├── README.md             # Project documentation
+├── templates/            # HTML templates
+│   ├── base.html         # Base template
+│   ├── index.html        # Main page
+│   ├── login.html        # Login page
+│   └── register.html     # Registration page
+└── static/               # Static files (CSS, JS, etc.)
+    └── styles.css        # Custom CSS for styling
+```
+
+---
+
+**Environment Variables**
+- To run this project, you need to set the following environment variables:
+**SECRET_KEY**: A secret key for Flask session management.
+**SQLALCHEMY_DATABASE_URI**: The database connection string (e.g., sqlite:///todo.db or postgresql://username:password@hostname/database).
+
+---
+
+**Contributing**
+- Contributions are welcome! Follow these steps:
+Fork the repository.
+- Create a new branch (git checkout -b feature/YourFeatureName).
+- Commit your changes (git commit -m 'Add some feature').
+- Push to the branch (git push origin feature/YourFeatureName).
+- Open a pull request.
+
+--- 
+
+**License**
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+**Acknowledgments**
+- Flask: For the web framework.
+- Bootstrap: For the responsive design.
+- Render: For deployment guidance.
