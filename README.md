@@ -2,8 +2,6 @@
 
 A simple and elegant To-Do List application built with **Flask**, **SQLAlchemy**, and **Bootstrap**. This application allows users to create, update, and manage their tasks with due dates and priorities.
 
-![App Screenshot](https://via.placeholder.com/800x600?text=To-Do+List+App+Screenshot)
-
 ---
 
 ## Features
