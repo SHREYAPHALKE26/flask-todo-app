@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form action="{{ url_for('add_task') }}" method="POST" class="mb-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" name="task_name" class="form-control" placeholder="Enter a new task" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" name="due_date" class="form-control" min="{{ today }}">
+                    </div>
+                    <div class="col-md-3">
+                        <select name="priority" class="form-select">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Centered "Add" button -->
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+            </form>
+
+            <h2 class="mb-3">Tasks</h2>
+            <ul class="list-group">
+                {% for task in tasks %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center {% if task.completed %}list-group-item-light{% endif %}">
+                        <div>
+                            <span class="{% if task.completed %}text-decoration-line-through{% endif %}">
+                                {{ task.name }}
+                            </span>
+                            <br>
+                            <small class="text-muted">
+                                Due: {{ task.due_date.strftime('%Y-%m-%d') if task.due_date else 'No due date' }}
+                            </small>
+                            <br>
+                            <small class="text-muted">
+                                Priority: <span class="badge bg-{% if task.priority == 'High' %}danger{% elif task.priority == 'Medium' %}warning{% else %}success{% endif %}">
+                                    {{ task.priority }}
+                                </span>
+                            </small>
+                        </div>
+                        <div>
+                            {% if not task.completed %}
+                                <a href="{{ url_for('complete_task', task_id=task.id) }}" class="btn btn-sm btn-success me-2">Complete</a>
+                            {% endif %}
+                            <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

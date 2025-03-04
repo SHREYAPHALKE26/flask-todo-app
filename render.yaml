@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: flask-todo-app
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SQLALCHEMY_DATABASE_URI
+        value: postgresql://username:password@hostname/database
